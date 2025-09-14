@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 400px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.word-display {
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  margin: 1.5rem 0;
+}
+
+.wrong-letters {
+  margin: 1rem 0;
+  color: crimson;
+}
+
+.figure-container {
+  position: relative;
+  height: 200px;
+  margin: 1rem auto;
+}
+
+.figure-part {
+  width: 4px;
+  height: 40px;
+  background: #333;
+  margin: 0 auto;
+  display: none; /* Start hidden, show with JS */
+}
+
+.figure-part.head {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-radius: 50%;
+}
+
+.figure-part.body {
+  height: 60px;
+}
+.figure-part.left-arm,
+.figure-part.right-arm {
+  height: 40px;
+  position: absolute;
+  top: 60px;
+  width: 4px;
+}
+.figure-part.left-arm {
+  left: 120px;
+  transform: rotate(-45deg);
+}
+.figure-part.right-arm {
+  right: 120px;
+  transform: rotate(45deg);
+}
+
+.figure-part.left-leg,
+.figure-part.right-leg {
+  height: 40px;
+  position: absolute;
+  top: 120px;
+  width: 4px;
+}
+.figure-part.left-leg {
+  left: 140px;
+  transform: rotate(30deg);
+}
+.figure-part.right-leg {
+  right: 140px;
+  transform: rotate(-30deg);
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.keyboard button {
+  margin: 0.2rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #ddd;
+}
+
+.keyboard button:disabled {
+  background: #bbb;
+  cursor: not-allowed;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
