@@ -2,18 +2,23 @@ const keyboard = document.getElementById("keyboard");
 const wordDisplay = document.getElementById("word-display");
 const wrongLetters = document.getElementById("wrong-letters");
 const guessLeft = document.getElementById("guesses-left");
+const figureParts = document.querySelectorAll(".figure-part");
 
 let words = [
-  "football",
-  "crispy",
-  "naruto",
-  "blueberrie",
-  "twentyonepilots",
+  "daha mutlu olamam",
+  "dogru yanlis",
+  "gul kendine",
   "hayat",
+  "hep ayni",
+  "eksik",
+  "orda durma",
+  "gece",
+  "bazen",
+  "canli yayin",
+  "bir",
 ];
 
-let guessCounter = 5;
-// will implement soon
+let guessCounter = 6;
 let correctLetters = [];
 let incorrectLetters = [];
 
@@ -51,21 +56,48 @@ function handleGuess(letter, button) {
     if (!incorrectLetters.includes(letter)) {
       incorrectLetters.push(letter);
       guessCounter--;
+      updateFigure();
     }
     wrongLetters.innerText = "Wrong letters: " + incorrectLetters.join(", ");
-    guessLeft.innerText = guessCounter;
+    guessLeft.innerText = "Guesses left: " + guessCounter;
   }
 
+  handleGame();
   button.disabled = true;
 }
 
-console.log(correctLetters);
-// Handle how the game victory condition is. When the player gusses all correct letters before 5 incorrect attempts he wins
-function handleGame() {}
+function handleGame() {
+  if (!displayWord.includes("_")) {
+    wordDisplay.innerText = displayWord.join("") + " You win!";
+    disableAllButtons();
+    return;
+  }
 
-let displayWord = randomWord.split("").map((ch) => (ch === "" ? "" : "_"));
+  if (guessCounter <= 0) {
+    wordDisplay.innerText = "Word was: " + randomWord + "     You lost!";
+    disableAllButtons();
+  }
+}
+
+let displayWord = randomWord.split("").map((ch) => (ch === " " ? " " : "_"));
 
 function displayThyWord() {
   wordDisplay.innerText = displayWord.join("");
 }
 displayThyWord();
+
+function disableAllButtons() {
+  let buttons = keyboard.querySelectorAll("button");
+  buttons.forEach((btn) => (btn.disabled = true));
+}
+
+function updateFigure() {
+  const errors = incorrectLetters.length;
+  figureParts.forEach((part, index) => {
+    if (index < errors) {
+      part.style.display = "block";
+    } else {
+      part.style.display = "none";
+    }
+  });
+}

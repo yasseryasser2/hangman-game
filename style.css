@@ -34,57 +34,115 @@ h1 {
 
 .figure-container {
   position: relative;
-  height: 200px;
-  margin: 1rem auto;
+  width: 240px;
+  height: 260px;
+  margin: 1.5rem auto;
+  display: block;
+  pointer-events: none;
+}
+
+.gallow-base {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 10px;
+  background: #333;
+  border-radius: 4px;
+}
+
+.gallow-pole {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 170px;
+  background: #333;
+}
+
+.gallow-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 10px;
+  background: #333;
+  border-radius: 4px;
+}
+
+.gallow-rope {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(36px);
+  width: 4px;
+  height: 36px;
+  background: #333;
 }
 
 .figure-part {
-  width: 4px;
-  height: 40px;
-  background: #333;
-  margin: 0 auto;
-  display: none; /* Start hidden, show with JS */
+  position: absolute;
+  display: none;
+  z-index: 3;
 }
 
 .figure-part.head {
-  width: 50px;
-  height: 50px;
+  top: 48px;
+  left: calc(50% + 36px);
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
   border: 4px solid #333;
   border-radius: 50%;
+  background: transparent;
 }
 
 .figure-part.body {
+  top: 100px;
+  left: calc(50% + 36px);
+  transform: translateX(-50%);
+  width: 4px;
   height: 60px;
+  background: #333;
 }
+
 .figure-part.left-arm,
 .figure-part.right-arm {
-  height: 40px;
-  position: absolute;
-  top: 60px;
+  top: 100px;
   width: 4px;
+  height: 40px;
+  background: #333;
+  transform-origin: top center;
 }
+
 .figure-part.left-arm {
-  left: 120px;
+  left: calc(50% + 36px - 26px);
   transform: rotate(-45deg);
 }
+
 .figure-part.right-arm {
-  right: 120px;
+  left: calc(50% + 36px + 26px);
   transform: rotate(45deg);
 }
 
 .figure-part.left-leg,
 .figure-part.right-leg {
-  height: 40px;
-  position: absolute;
-  top: 120px;
+  top: 156px;
   width: 4px;
+  height: 55px;
+  background: #333;
 }
+
 .figure-part.left-leg {
-  left: 140px;
+  left: calc(50% + 36px - 14px);
   transform: rotate(30deg);
 }
+
 .figure-part.right-leg {
-  right: 140px;
+  left: calc(50% + 36px + 14px);
   transform: rotate(-30deg);
 }
 
